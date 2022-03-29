@@ -51,7 +51,7 @@ const GetQuiz = ({ Categories }) => {
                 </select> <br /><br />
 
                 <label>Number Of Questions</label><br />
-                <input type='number' min='1' max='50' defaultValue={numberOfQuestions} onChange={changeNumberOfQuestions}/><br /><br />
+                <input type='number' min='1' max='50' defaultValue={DEFAULT_NUMBEROFQUESTIONS} onChange={changeNumberOfQuestions}/><br /><br />
 
                 <label>Select Difficulty</label><br />
                 <select onChange={changeDifficulty}>

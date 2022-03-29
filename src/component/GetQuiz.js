@@ -9,13 +9,19 @@ const GetQuiz = ({ Categories }) => {
     const DEFAULT_DIFFICULTY= 'Any Difficulty'
     const DEFAULT_ANSWERTYPE = 'Any Type'
 
+    const categoryURL = '&category='
+    const numberOfQuestionURL = 'amount='
+    const difficultyURL = '&difficulty='
+    const answerTypeURL = '&type='
+
     const [category, setCategory] = useState(DEFAULT_CATEGORY)
     const [numberOfQuestions, setNumberOfQuestions] = useState(DEFAULT_NUMBEROFQUESTIONS)
     const [difficulty, setDifficulty] = useState(DEFAULT_DIFFICULTY);
     const [answerType, setAnswerType] = useState(DEFAULT_ANSWERTYPE);
 
     const changeCategory = (e) => {
-        setCategory(e.target.value)
+        const category = Categories.find((c) => c.name == e.target.value)
+        setCategory(category)
     }
 
     const changeNumberOfQuestions = (e) => {
@@ -23,18 +29,43 @@ const GetQuiz = ({ Categories }) => {
     }
 
     const changeDifficulty = (e) => {
-        setDifficulty(e.target.value)
+        setDifficulty(e.target.value.toLowerCase())
     }
 
     const changeAnswerType = (e) => {
-        setAnswerType(e.target.value)
+        if(e.target.value == 'Multiple Choice') {
+            setAnswerType('multiple')
+        } else if(e.target.value == 'True / False') {
+            setAnswerType('boolean')
+        } else {
+            setAnswerType(e.target.value)
+        }
     }
 
     const onSubmit = (e) => {
-        /**TODO:
-         * send search parameters to a fetch function
-         * to fetch all quizzes
-         */
+        e.preventDefault()
+        
+        let URL = numberOfQuestionURL+numberOfQuestions
+        //Check if parameters are selected 
+        //and if so adds the parameter to the url
+        if(category !== DEFAULT_CATEGORY) {
+            URL += categoryURL+category.id
+        }
+        if(difficulty !== DEFAULT_DIFFICULTY) {
+            URL += difficultyURL+difficulty
+        }
+        if(answerType !== DEFAULT_ANSWERTYPE) {
+            URL += answerTypeURL+answerType
+        }
+        fetchQuiz(URL)
+    }
+
+    const fetchQuiz = async (URL) => {
+        const res = await fetch('https://opentdb.com/api.php?'+URL)
+        const data = await res.json()
+        console.log(URL); //TODO: delete later..
+        console.log(data); //TODO: delete later..
+        return data
     }
 
 
@@ -69,7 +100,7 @@ const GetQuiz = ({ Categories }) => {
                     <option>True / False</option>
                 </select><br />
 
-                <input type='submit' value='Search' />
+                <input type='submit' value='search'/>
                 
             </form>
         </div>

@@ -6,7 +6,6 @@ import "styles/Header.css"
 export default function App() {
 
   const [category, setCategory] = useState([]);
-
   useEffect(() => {
       const getCategories = async () => {
           const categoriesFromServer = await fetchCategories();

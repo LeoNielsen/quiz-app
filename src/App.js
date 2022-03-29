@@ -1,5 +1,11 @@
+import Header from "component/Header"
+import GetQuiz from "component/GetQuiz"
+import "styles/Header.css"
+
+
 export default function App() {
-  return <>
-  <h1>Quiz App</h1>
-  </>
+  return <div className="container">
+  <Header />
+  <GetQuiz />
+  </div>
 }

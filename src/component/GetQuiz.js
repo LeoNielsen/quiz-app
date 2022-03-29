@@ -2,9 +2,15 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const GetQuiz = ({ Categories }) => {
+
+    function submit(e){
+        e.preventDefault();
+    }
+
+
   return (
     <div className='body'>
-        <form>
+        <form onSubmit={submit}>
             <label>Category</label><br/>
             <select>
                 <option key={0}>Any Category</option>
@@ -31,9 +37,9 @@ const GetQuiz = ({ Categories }) => {
                 <option>Any Type</option>
                 <option>Multiple Choice</option>
                 <option>True / False</option>
-            </select><br/>
+            </select><br/><br/>
 
-
+            <input type='submit' value={'Create Quiz'} className="btn" style={{backgroundColor: 'Green'}}/>
         </form>
     </div>
   )

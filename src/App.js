@@ -1,3 +1,5 @@
 export default function App() {
-  return <></>
+  return <>
+  <h1>Quiz App</h1>
+  </>
 }

@@ -20,8 +20,12 @@ const GetQuiz = ({ Categories }) => {
     const [answerType, setAnswerType] = useState(DEFAULT_ANSWERTYPE);
 
     const changeCategory = (e) => {
-        const category = Categories.find((c) => c.name == e.target.value)
-        setCategory(category)
+        if(e.target.value !== DEFAULT_CATEGORY) {
+            const category = Categories.find((c) => c.name == e.target.value)
+            setCategory(category)
+        } else {
+            setCategory(e.target.value)
+        }
     }
 
     const changeNumberOfQuestions = (e) => {

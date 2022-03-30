@@ -29,7 +29,13 @@ const GetQuiz = ({ Categories }) => {
     }
 
     const changeDifficulty = (e) => {
-        setDifficulty(e.target.value.toLowerCase())
+        if(e.target.value !== DEFAULT_DIFFICULTY) {
+            setDifficulty(e.target.value.toLowerCase())
+        }
+        else {
+            setDifficulty(e.target.value)
+        }
+        
     }
 
     const changeAnswerType = (e) => {

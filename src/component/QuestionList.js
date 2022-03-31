@@ -4,21 +4,22 @@ import Question from "./Question"
 import PropTypes from 'prop-types';
 import QuizResult from "./QuizResult";
 import Header from "./Header";
-const QuestionList = ({ quiz, endQuiz }) => {
+const QuestionList = ({quiz, endQuiz}) => {
 
+    const restart = () => {
+        setNumberOfQuestions(0);
+        setResult(0);
+        console.log("restart")
+    }
+    
     const [questionNumber, setNumberOfQuestions] = useState(0);
 
     const getNextQuestion = () => {
         setNumberOfQuestions(questionNumber + 1)
-        if (questionNumber == quiz.length) {
-            console.log("out of quiz size")
-            endQuiz()
-        }
     }
 
     let [result, setResult] = useState(0);
-    
-    
+ 
 
     const checkAnswer = (e) => {
         // e.preventDefault();
@@ -29,10 +30,8 @@ const QuestionList = ({ quiz, endQuiz }) => {
         if(correctAnswer == value) {
             setResult(result+=1)
         }
-        console.log("Result: " + result
-        );
+        console.log("Result: " + result);
     }
-
     return (
 
         <>
@@ -41,7 +40,7 @@ const QuestionList = ({ quiz, endQuiz }) => {
                 questionNumber == quiz.length ?
                     <>
                         <Header />
-                        <QuizResult result={result} quizSize={quiz.length}/>
+                        <QuizResult result={result} quizSize={quiz.length} restart={restart} endQuiz={endQuiz}/>
                     </>
 
                     :

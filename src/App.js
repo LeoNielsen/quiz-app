@@ -28,8 +28,8 @@ export default function App() {
     const fetchQuiz = async (URL) => {
         const res = await fetch('https://opentdb.com/api.php?' + URL)
         const data = await res.json()
-     /*    console.log(URL); //TODO: delete later..
-        console.log(data); //TODO: delete later.. */
+        console.log(URL); //TODO: delete later..
+        console.log(data); //TODO: delete later..
         return data;
     }
 

@@ -18,13 +18,14 @@ const QuestionList = ({ quiz, endQuiz }) => {
 
     let [result, setResult] = useState(0);
     
+    
 
     const checkAnswer = (e) => {
-        e.preventDefault();
+        // e.preventDefault();
         const currentTag = e.currentTarget;
         const value = currentTag.id;
         const correctAnswer = quiz[questionNumber].correct_answer;
-
+        
         if(correctAnswer == value) {
             setResult(result+=1)
         }

@@ -40,6 +40,21 @@ const Question = ({ question, qCorrectAnswer, qIncorrectAnswers, index, quizSize
             setAnswerStyle3(style)
         }
     }
+    const replaceChara = (answers, id) =>{
+        return answers[id].replace(/&quot;/g,'"')
+        .replace(/&rdquo;/g, '"')
+        .replace(/&ldquo;/g, '"')
+        .replace(/&#039;/g, "'")
+        .replace(/&ntilde;/g, 'ñ')
+        .replace(/&hellip/g, '...')
+        .replace(/&egrave;/g, 'è')
+        .replace(/&amp;/g, '&')
+        .replace(/&oacute;/g, 'ó')
+        .replace(/&aacute;/g, 'á')
+        .replace(/&eacute;/g, 'é')
+        .replace(/&rsquo;/g, '’')
+    }
+
 
     const changeStyle = (e) => {
         //Find id for div, som er klikket på
@@ -72,10 +87,14 @@ const Question = ({ question, qCorrectAnswer, qIncorrectAnswers, index, quizSize
                     <div className='flex-item'>
                         <p className='question-amount-desc'>Question {index} of {quizSize}</p>
                         <p className='question-category-desc'>{question.category}</p>
-                        <label>{question.question.replace(/&quot;/g, '"')
-                            .replace(/&rdquo;/g, '"')
-                            .replace(/&ldquo;/g, '"')
-                            .replace(/&#039;/g, "'").replace(/&ntilde;/g, 'ñ')}</label>
+                        <label>{question.question.replace(/&quot;/g,'"')
+                        .replace(/&rdquo;/g, '"')
+                        .replace(/&ldquo;/g, '"')
+                        .replace(/&#039;/g, "'")
+                        .replace(/&ntilde;/g, 'ñ')
+                        .replace(/&hellip/g, '...')
+                        .replace(/&amp;/g, '&')
+                        .replace(/&rsquo;/g, '’')}</label>
                     </div>
                 </div>
             </div>
@@ -84,17 +103,11 @@ const Question = ({ question, qCorrectAnswer, qIncorrectAnswers, index, quizSize
                     <div className='flex-item-left'>
                         <div id="answer-0" className={answerStyle0} onClick={changeStyle}>
                             <div className='answer-letter'>A</div>
-                            <div className='answer-desc'>{allAnswers[0].replace(/&quot;/g, '"')
-                                .replace(/&rdquo;/g, '"')
-                                .replace(/&ldquo;/g, '"')
-                                .replace(/&#039;/g, "'").replace(/&ntilde;/g, 'ñ')}</div>
+                            <div className='answer-desc'>{replaceChara(allAnswers, 0)}</div>
                         </div>
                         <div id="answer-1" className={answerStyle1} onClick={changeStyle}>
                             <div className='answer-letter'>B</div>
-                            <div className='answer-desc'>{allAnswers[1].replace(/&quot;/g, '"')
-                                .replace(/&rdquo;/g, '"')
-                                .replace(/&ldquo;/g, '"')
-                                .replace(/&#039;/g, "'").replace(/&ntilde;/g, 'ñ')}</div>
+                            <div className='answer-desc'>{replaceChara(allAnswers, 1)}</div>
                         </div>
                     </div>
 
@@ -103,18 +116,11 @@ const Question = ({ question, qCorrectAnswer, qIncorrectAnswers, index, quizSize
                         (<div className='flex-item-right'>
                             <div id="answer-2" className={answerStyle2} onClick={changeStyle}>
                                 <div className='answer-letter'>C</div>
-                                <div className='answer-desc'>{allAnswers[2].replace(/&quot;/g, '"')
-                                    .replace(/&rdquo;/g, '"')
-                                    .replace(/&ldquo;/g, '"')
-                                    .replace(/&#039;/g, "'").replace(/&ntilde;/g, 'ñ')}</div>
+                                <div className='answer-desc'>{replaceChara(allAnswers, 2)}</div>
                             </div>
                             <div id="answer-3" className={answerStyle3} onClick={changeStyle}>
                                 <div className='answer-letter'>D</div>
-                                <div className='answer-desc'>{allAnswers[3].replace(/&quot;/g, '"')
-                                    .replace(/&rdquo;/g, '"')
-                                    .replace(/&ldquo;/g, '"')
-                                    .replace(/&#039;/g, "'")
-                                    .replace(/&ntilde;/g, 'ñ')}</div>
+                                <div className='answer-desc'>{replaceChara(allAnswers, 3)}</div>
                             </div>
                         </div>) : <></>
                     }

@@ -52,7 +52,7 @@ const Question = ({ question, qCorrectAnswer, qIncorrectAnswers, index, quizSize
                         <label>{question.question.replace(/&quot;/g,'"')
                         .replace(/&rdquo;/g, '"')
                         .replace(/&ldquo;/g, '"')
-                        .replace(/&#039;/g, "'")}</label>
+                        .replace(/&#039;/g, "'").replace(/&ntilde;/g, 'ñ')}</label>
                     </div>
                 </div>
             </div>
@@ -61,11 +61,17 @@ const Question = ({ question, qCorrectAnswer, qIncorrectAnswers, index, quizSize
                     <div className='flex-item-left'>
                         <div id='answer1' className={style}>
                             <div className='answer-letter'>A</div>
-                            <div className='answer-desc'>{allAnswers[0]}</div>
+                            <div className='answer-desc'>{allAnswers[0].replace(/&quot;/g,'"')
+                        .replace(/&rdquo;/g, '"')
+                        .replace(/&ldquo;/g, '"')
+                        .replace(/&#039;/g, "'").replace(/&ntilde;/g, 'ñ')}</div>
                         </div>
                         <div id='answer2' className={style}>
                             <div className='answer-letter'>B</div>
-                            <div className='answer-desc'>{allAnswers[1]}</div>
+                            <div className='answer-desc'>{allAnswers[1].replace(/&quot;/g,'"')
+                        .replace(/&rdquo;/g, '"')
+                        .replace(/&ldquo;/g, '"')
+                        .replace(/&#039;/g, "'").replace(/&ntilde;/g, 'ñ')}</div>
                         </div>
                     </div>
 
@@ -74,11 +80,18 @@ const Question = ({ question, qCorrectAnswer, qIncorrectAnswers, index, quizSize
                         (<div className='flex-item-right'>
                             <div id='answer3' className={style}>
                                 <div className='answer-letter'>C</div>
-                                <div className='answer-desc'>{allAnswers[2]}</div>
+                                <div className='answer-desc'>{allAnswers[2].replace(/&quot;/g,'"')
+                        .replace(/&rdquo;/g, '"')
+                        .replace(/&ldquo;/g, '"')
+                        .replace(/&#039;/g, "'").replace(/&ntilde;/g, 'ñ')}</div>
                             </div>
                             <div id='answer4' className={style}>
                                 <div className='answer-letter'>D</div>
-                                <div className='answer-desc'>{allAnswers[3]}</div>
+                                <div className='answer-desc'>{allAnswers[3].replace(/&quot;/g,'"')
+                        .replace(/&rdquo;/g, '"')
+                        .replace(/&ldquo;/g, '"')
+                        .replace(/&#039;/g, "'")
+                        .replace(/&ntilde;/g, 'ñ')}</div>
                             </div>
                         </div>) : <></>
                     }

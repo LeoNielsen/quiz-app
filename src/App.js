@@ -49,11 +49,14 @@ export default function App() {
 
     return <div className="container">
         <>
-        { startQuiz ? (<QuestionList quiz={quiz} />) : (<Header />) &&
-        (<GetQuiz Categories={category} getQuiz={getQuiz}/>)
-        }
+            {startQuiz ? (<QuestionList quiz={quiz} />) :
+                <>
+                    <Header />
+                    <GetQuiz Categories={category} getQuiz={getQuiz} />
+                </>
+            }
         </>
-        
+
         {/* <QuizResult/> */}
         <Footer />
     </div>

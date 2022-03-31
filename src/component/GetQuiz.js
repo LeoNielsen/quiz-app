@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import ".././styles/get-quiz.css"
 
 
-const GetQuiz = ({ Categories , getQuiz/*getStartQuiz*/ }) => {
+const GetQuiz = ({ Categories , getQuiz}) => {
 
     const DEFAULT_CATEGORY = 'Any Category'
     const DEFAULT_NUMBEROFQUESTIONS = '10'

@@ -50,7 +50,7 @@ export default function App() {
     return <div className="container">
         <>
         { startQuiz ? (<QuestionList quiz={quiz} />) : (<Header />) &&
-        (<GetQuiz Categories={category} getQuiz={getQuiz} getStartQuiz={getStartQuiz}/>)
+        (<GetQuiz Categories={category} getQuiz={getQuiz}/>)
         }
         </>
         

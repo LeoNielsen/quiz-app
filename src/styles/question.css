@@ -1,8 +1,4 @@
-.question-section {
-}
-
 .question-section img{
-  
   max-width: 150px;
   padding-top: 20px;
   padding-bottom: 10px;
@@ -173,7 +169,9 @@
     width: 80%;
     max-width: 1000px;
   }
+
   .question-menu-section .black-btn {
     width: 200px;
-  }  
+  }
+
 }

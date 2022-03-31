@@ -4,7 +4,7 @@ import logo from '../img/blacklogo.png'
 import { useState, useEffect } from 'react'
 import PropTypes from 'prop-types';
 
-const Question = ({ question, qCorrectAnswer, qIncorrectAnswers, index, quizSize, getNextQuestion }) => {
+const Question = ({ question, qCorrectAnswer, qIncorrectAnswers, index, quizSize, getNextQuestion, checkAnswer }) => {
     /*TODO:
     --make a shuffle functions
     --´set values of each answer
@@ -18,7 +18,6 @@ const Question = ({ question, qCorrectAnswer, qIncorrectAnswers, index, quizSize
 
     const [allAnswers, setAllAnswers] = useState([...qIncorrectAnswers, qCorrectAnswer])
 
-
     useEffect(() => {
         const shuffledArray = allAnswers.sort((a, b) => 0.5 - Math.random());
         setAllAnswers([...shuffledArray])
@@ -26,19 +25,11 @@ const Question = ({ question, qCorrectAnswer, qIncorrectAnswers, index, quizSize
     }, [])
 
 
-    // const changeAnswerStyle = () => {
-    //     setAnswerStyle('')
-    // }
+    const [answerStyle1, setAnswerStyle1] = useState('answer-item');
+    const [answerStyle2, setAnswerStyle2] = useState('answer-item');
+    const [answerStyle3, setAnswerStyle3] = useState('answer-item');
+    const [answerStyle4, setAnswerStyle4] = useState('answer-item');
 
-    // const [answers, setAnswers] = useState([]);
-    // const [answerStyle1, setAnswerStyle1] = useState('answer-item');
-    // const [answerStyle2, setAnswerStyle2] = useState('answer-item');
-    // const [answerStyle3, setAnswerStyle3] = useState('answer-item');
-    // const [answerStyle4, setAnswerStyle4] = useState('answer-item');
-
-    // const changeStyle = () => {
-
-    // }
 
 
     return (
@@ -59,14 +50,14 @@ const Question = ({ question, qCorrectAnswer, qIncorrectAnswers, index, quizSize
             <div className='answers-section'>
                 <div className='flex-container'>
                     <div className='flex-item-left'>
-                        <div id='answer1' className={style}>
+                        <div id={allAnswers[0]} className={answerStyle1} onClick={checkAnswer}>
                             <div className='answer-letter'>A</div>
                             <div className='answer-desc'>{allAnswers[0].replace(/&quot;/g,'"')
                         .replace(/&rdquo;/g, '"')
                         .replace(/&ldquo;/g, '"')
                         .replace(/&#039;/g, "'").replace(/&ntilde;/g, 'ñ')}</div>
                         </div>
-                        <div id='answer2' className={style}>
+                        <div id={allAnswers[1]} className={answerStyle2} onClick={checkAnswer}>
                             <div className='answer-letter'>B</div>
                             <div className='answer-desc'>{allAnswers[1].replace(/&quot;/g,'"')
                         .replace(/&rdquo;/g, '"')
@@ -78,14 +69,14 @@ const Question = ({ question, qCorrectAnswer, qIncorrectAnswers, index, quizSize
                     {/* If question has multiple type we adds two more answer */}
                     {(question.type == "multiple") ?
                         (<div className='flex-item-right'>
-                            <div id='answer3' className={style}>
+                            <div id={allAnswers[2]} className={answerStyle3} onClick={checkAnswer}>
                                 <div className='answer-letter'>C</div>
                                 <div className='answer-desc'>{allAnswers[2].replace(/&quot;/g,'"')
                         .replace(/&rdquo;/g, '"')
                         .replace(/&ldquo;/g, '"')
                         .replace(/&#039;/g, "'").replace(/&ntilde;/g, 'ñ')}</div>
                             </div>
-                            <div id='answer4' className={style}>
+                            <div id={allAnswers[3]} className={answerStyle4} onClick={checkAnswer}>
                                 <div className='answer-letter'>D</div>
                                 <div className='answer-desc'>{allAnswers[3].replace(/&quot;/g,'"')
                         .replace(/&rdquo;/g, '"')
@@ -101,7 +92,8 @@ const Question = ({ question, qCorrectAnswer, qIncorrectAnswers, index, quizSize
                 <div className='flex-container'>
 
                     <div className='flex-item'>
-                        <button className='black-btn' onClick={getNextQuestion}>Next question</button>
+                        <button className='black-btn' onClick={getNextQuestion}>
+                            {index == quizSize ? 'Show result':'Next question'}</button>
                     </div>
                 </div>
             </div>

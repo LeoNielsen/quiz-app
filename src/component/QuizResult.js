@@ -1,7 +1,7 @@
 import React from 'react'
 import ".././styles/quiz-result.css"
 
-const QuizResult = () => {
+const QuizResult = ({result, quizSize}) => {
     return(
         <div className='quiz-result-section'>
                 <div className='white-container'>
@@ -9,7 +9,7 @@ const QuizResult = () => {
                         <div className='flex-item'>
                             <p className='title'>Result</p>
                             <p className='result-comment'>Well played!</p>
-                            <p className='result-value'>55% correct</p>
+                            <p className='result-value'>{result} / {quizSize}</p>
                         </div>
                     </div>
                     <div className='flex-container'>

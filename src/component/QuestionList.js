@@ -2,27 +2,51 @@ import react from "react"
 import { useState } from "react"
 import Question from "./Question"
 import PropTypes from 'prop-types';
-const QuestionList = ({ quiz }) => {
+import QuizResult from "./QuizResult";
+import Header from "./Header";
+const QuestionList = ({ quiz, endQuiz }) => {
 
     const [questionNumber, setNumberOfQuestions] = useState(0);
 
     const getNextQuestion = () => {
         setNumberOfQuestions(questionNumber + 1)
+        if (questionNumber == quiz.length) {
+            console.log("out of quiz size")
+            endQuiz()
+        }
+    }
 
+    let [result, setResult] = useState(0);
+    
+
+    const checkAnswer = (e) => {
+        e.preventDefault();
+        const currentTag = e.currentTarget;
+        const value = currentTag.id;
+        const correctAnswer = quiz[questionNumber].correct_answer;
+
+        if(correctAnswer == value) {
+            setResult(result+=1)
+        }
+        console.log("Result: " + result
+        );
     }
 
     return (
 
         <>
+            {console.log({ quiz })}
+            {
+                questionNumber == quiz.length ?
+                    <>
+                        <Header />
+                        <QuizResult result={result} quizSize={quiz.length}/>
+                    </>
 
-            {console.log({quiz})}
-            {/* {
-                quiz.map((q) => {
-                    return <Question key={questionNumber} question={q} qCorrectAnswer={q.correct_answer} qIncorrectAnswers={q.incorrect_answers} index={questionNumber + 1} quizSize={quiz.length} getNextQuestion={getNextQuestion} />
-                })
+                    :
+                    <Question key={questionNumber} question={quiz[questionNumber]} qCorrectAnswer={quiz[questionNumber].correct_answer} qIncorrectAnswers={quiz[questionNumber].incorrect_answers} index={questionNumber + 1} quizSize={quiz.length} getNextQuestion={getNextQuestion} checkAnswer={checkAnswer} />
 
-            } */}
-            <Question key={questionNumber} question={quiz[questionNumber]} qCorrectAnswer={quiz[questionNumber].correct_answer} qIncorrectAnswers={quiz[questionNumber].incorrect_answers} index={questionNumber + 1} quizSize={quiz.length} getNextQuestion={getNextQuestion} />
+            }
         </>
 
 

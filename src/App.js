@@ -25,6 +25,7 @@ export default function App() {
 
     const [quiz, setQuiz] = useState([]);
     const [startQuiz, setStartQuiz] = useState(false);
+    const [endQuiz, setEndQuiz] = useState(false);
 
     const fetchQuiz = async (URL) => {
         //console.log(URL);
@@ -45,16 +46,32 @@ export default function App() {
         setStartQuiz(!startQuiz);
     }
 
+
+    const end = async () => {
+        getEndQuiz();
+    }
+
+    const getEndQuiz = () => {
+        setEndQuiz(!endQuiz);
+    }
+
     //console.log(`this is a quiz:${JSON.stringify(quiz[0])}`);
 
     return <div className="container">
         <>
-            {startQuiz ? (<QuestionList quiz={quiz} />) :
+            {startQuiz ? (
+            
+            endQuiz? <QuizResult/> :
+            <QuestionList quiz={quiz}  endQuiz={end}/>
+            
+            ) :
                 <>
                     <Header />
                     <GetQuiz Categories={category} getQuiz={getQuiz} />
                 </>
             }
+            
+
         </>
 
         {/* <QuizResult/> */}

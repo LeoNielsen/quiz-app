@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import ".././styles/get-quiz.css"
 
 
-const GetQuiz = ({ Categories, getQuiz, getStartQuiz }) => {
+const GetQuiz = ({ Categories , getQuiz/*getStartQuiz*/ }) => {
 
     const DEFAULT_CATEGORY = 'Any Category'
     const DEFAULT_NUMBEROFQUESTIONS = '10'
@@ -57,11 +57,11 @@ const GetQuiz = ({ Categories, getQuiz, getStartQuiz }) => {
     const onSubmit = (e) => {
         e.preventDefault();   
         startQuiz() 
-        getStartQuiz();
+        //getStartQuiz();
     }
 
     useEffect(() => {
-        return startQuiz()
+        //return startQuiz()
     },[])
 
     const startQuiz = () => {

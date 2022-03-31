@@ -27,7 +27,7 @@ export default function App() {
     const [startQuiz, setStartQuiz] = useState(false);
 
     const fetchQuiz = async (URL) => {
-        console.log(URL);
+        //console.log(URL);
         const res = await fetch('https://opentdb.com/api.php?' + URL)
         const data = await res.json()
         //console.log(`this is URL ${URL}`); //TODO: delete later..
@@ -38,6 +38,7 @@ export default function App() {
     const getQuiz = async (URL) => {
         const quizFromServer = await fetchQuiz(URL);
         setQuiz(quizFromServer.results);
+        getStartQuiz();
     }
 
     const getStartQuiz = () => {

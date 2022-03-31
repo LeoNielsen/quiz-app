@@ -14,6 +14,8 @@ const QuestionList = ({ quiz }) => {
     return (
 
         <>
+
+            {console.log({quiz})}
             {/* {
                 quiz.map((q) => {
                     return <Question key={questionNumber} question={q} qCorrectAnswer={q.correct_answer} qIncorrectAnswers={q.incorrect_answers} index={questionNumber + 1} quizSize={quiz.length} getNextQuestion={getNextQuestion} />

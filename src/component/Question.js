@@ -20,8 +20,8 @@ const Question = ({ question, qCorrectAnswer, qIncorrectAnswers, index, quizSize
 
 
     useEffect(() => {
-        /* const shuffledArray = allAnswers.sort((a, b) => 0.5 - Math.random());
-        setAllAnswers([shuffledArray]) */
+        const shuffledArray = allAnswers.sort((a, b) => 0.5 - Math.random());
+        setAllAnswers([...shuffledArray])
         //console.log(`this is true: ${qCorrectAnswer}`);
     }, [])
 
@@ -49,15 +49,10 @@ const Question = ({ question, qCorrectAnswer, qIncorrectAnswers, index, quizSize
                     <div className='flex-item'>
                         <p className='question-amount-desc'>Question {index} of {quizSize}</p>
                         <p className='question-category-desc'>{question.category}</p>
-<<<<<<< HEAD
-                        <label>{question.question}</label>
-                        <label>Correct answer: {question.correct_answer}</label>
-=======
                         <label>{question.question.replace(/&quot;/g,'"')
                         .replace(/&rdquo;/g, '"')
                         .replace(/&ldquo;/g, '"')
                         .replace(/&#039;/g, "'")}</label>
->>>>>>> bee45f80cdd6fe05d183d1ab1f0cc95f99c6f53f
                     </div>
                 </div>
             </div>

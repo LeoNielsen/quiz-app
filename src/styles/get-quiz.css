@@ -1,0 +1,40 @@
+.search-section {
+    background-color: rgb(0, 102, 235);
+  }
+  
+  .search-section .white-container{
+    padding-top: 20px;
+    border-radius: 2px;
+  }
+  
+  .search-section .search-item {
+    font-size: 18px;
+    text-align: left;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .search-item label{
+    font-weight: bold;
+  }
+  .search-item .search-btn {
+    background-color: rgb(0, 0, 0);
+    color: white;
+  }
+  
+  .search-item .search-btn:hover {
+    background-color: #19bb4f;
+  }
+  
+  @media screen and (min-width: 768px){
+    .search-section .white-container{
+      width: 70%;
+      max-width: 1000px;
+      margin: auto;
+      /* background-color: white; */
+    }
+    .search-item .search-btn {
+      max-width: 40%;
+    }
+  }

@@ -1,12 +1,15 @@
 import React from 'react'
-import logo from '../img/logo192.png'
+import logo from '../img/whitelogo.png'
+import ".././styles/Header.css"
 
 const Header = () => {
   return (
     <header className='header'>
-        {/* replace logo */}
+      <div className='flex-container'>
+        <div className='flex-item'>
         <img src={logo}/>
-        <h1>Quiz Name</h1>
+        </div>
+      </div>
     </header>
   )
 }

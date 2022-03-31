@@ -60,7 +60,10 @@ const Question = ({ question, qCorrectAnswer, qIncorrectAnswers }) => {
                     <div className='flex-item'>
                         <p className='question-amount-desc'>Question 1 of 10</p>
                         <p className='question-category-desc'>{question.category}</p>
-                        <label>{question.question}</label>
+                        <label>{question.question.replace(/&quot;/g,'"')
+                        .replace(/&rdquo;/g, '"')
+                        .replace(/&ldquo;/g, '"')
+                        .replace(/&#039;/g, "'")}</label>
                     </div>
                 </div>
             </div>

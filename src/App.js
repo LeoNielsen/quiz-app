@@ -45,8 +45,6 @@ export default function App() {
     const getStartQuiz = () => {
         setStartQuiz(true);
         setEndQuiz(false);
-        console.log('quiz:' + endQuiz)
-        console.log('startquiz: ' + startQuiz)
     }
 
     const [endQuiz, setEndQuiz] = useState(true);

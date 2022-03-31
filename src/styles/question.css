@@ -61,7 +61,8 @@
 .answer-item .answer-letter, .wrong-answer-item .answer-letter, .correct-answer-item .answer-letter {
   border-radius: 100%;
   border: none;
-  min-width: 30px;
+  width: 35px;
+  height: 35px;
   font-weight: bold;
 }
 
@@ -93,6 +94,7 @@
 .correct-answer-item {
   border: 1px solid rgb(122, 255, 128);
   background-color: rgb(220, 255, 225);
+  pointer-events: none;
 }
 
 .correct-answer-item .answer-letter{
@@ -157,12 +159,14 @@
 
   .answer-item > div, .wrong-answer-item > div, .correct-answer-item > div{
     font-size: 20px;
-    padding: 5px;
+    padding: 2px;
+  }
+
+  .answer-item .answer-letter, .wrong-answer-item .answer-letter, .correct-answer-item .answer-letter {
+    width: 40px;
+    height: 35px;
   }
   
-  .answer-item .answer-letter, .wrong-answer-item .answer-letter, .correct-answer-item .answer-letter{
-    min-width: 40px;
-  }
 
   .question-menu-section {
     margin: auto;

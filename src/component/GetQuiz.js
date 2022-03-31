@@ -1,10 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import ".././styles/get-quiz.css"
 
 
-const GetQuiz = ({ Categories, getQuiz }) => {
+const GetQuiz = ({ Categories, getQuiz, getStartQuiz }) => {
 
     const DEFAULT_CATEGORY = 'Any Category'
     const DEFAULT_NUMBEROFQUESTIONS = '10'
@@ -55,8 +55,16 @@ const GetQuiz = ({ Categories, getQuiz }) => {
     }
 
     const onSubmit = (e) => {
-        e.preventDefault()
+        e.preventDefault();   
+        startQuiz() 
+        getStartQuiz();
+    }
 
+    useEffect(() => {
+        return startQuiz()
+    },[])
+
+    const startQuiz = () => {
         let URL = numberOfQuestionURL + numberOfQuestions
         //Check if parameters are selected 
         //and if so adds the parameter to the url
@@ -69,7 +77,8 @@ const GetQuiz = ({ Categories, getQuiz }) => {
         if (answerType !== DEFAULT_ANSWERTYPE) {
             URL += answerTypeURL + answerType
         }
-        getQuiz(URL)
+        console.log(URL);
+        return getQuiz(URL);
     }
 
 
@@ -141,6 +150,7 @@ const GetQuiz = ({ Categories, getQuiz }) => {
 
 GetQuiz.proptype = {
     Categories: PropTypes.array.isRequired,
+    getStartQuiz: PropTypes.bool.isRequired,
 }
 
 export default GetQuiz

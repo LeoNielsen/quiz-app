@@ -23,13 +23,15 @@ export default function App() {
         return data;
     }
 
-    const [quiz, setQuiz] = useState('');
+    const [quiz, setQuiz] = useState([]);
+    const [startQuiz, setStartQuiz] = useState(false);
 
     const fetchQuiz = async (URL) => {
+        console.log(URL);
         const res = await fetch('https://opentdb.com/api.php?' + URL)
         const data = await res.json()
-        console.log(URL); //TODO: delete later..
-        console.log(data); //TODO: delete later..
+        //console.log(`this is URL ${URL}`); //TODO: delete later..
+        //console.log(`this is data ${data}`); //TODO: delete later..
         return data;
     }
 
@@ -38,11 +40,19 @@ export default function App() {
         setQuiz(quizFromServer.results);
     }
 
+    const getStartQuiz = () => {
+        setStartQuiz(!startQuiz);
+    }
+
+    //console.log(`this is a quiz:${JSON.stringify(quiz[0])}`);
+
     return <div className="container">
-        <Header />
-        <GetQuiz Categories={category} getQuiz={getQuiz} />
+        <>
+        { startQuiz ? (<Question question={quiz[0]} qCorrectAnswer={quiz[0].correct_answer} qIncorrectAnswers={quiz[0].incorrect_answers} />) : (<Header />) &&
+        (<GetQuiz Categories={category} getQuiz={getQuiz} getStartQuiz={getStartQuiz}/>)
+        }
+        </>
         
-        <Question question={quiz[0]} />
         {/* <QuizResult/> */}
         <Footer />
     </div>

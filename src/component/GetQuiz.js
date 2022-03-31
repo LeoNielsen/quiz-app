@@ -77,8 +77,7 @@ const GetQuiz = ({ Categories, getQuiz, getStartQuiz }) => {
         if (answerType !== DEFAULT_ANSWERTYPE) {
             URL += answerTypeURL + answerType
         }
-        console.log(URL);
-        return getQuiz(URL);
+        getQuiz(URL);
     }
 
 

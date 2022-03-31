@@ -4,7 +4,7 @@ import react, { useState, useEffect } from "react";
 import "styles/App.css"
 import Footer from "component/Footer";
 import QuizResult from "component/QuizResult";
-import Question from "component/Question";
+import QuestionList from "component/QuestionList";
 
 export default function App() {
 
@@ -31,7 +31,7 @@ export default function App() {
         const res = await fetch('https://opentdb.com/api.php?' + URL)
         const data = await res.json()
         //console.log(`this is URL ${URL}`); //TODO: delete later..
-        //console.log(`this is data ${data}`); //TODO: delete later..
+        //console.log("this is data" +  data); //TODO: delete later..
         return data;
     }
 
@@ -48,7 +48,7 @@ export default function App() {
 
     return <div className="container">
         <>
-        { startQuiz ? (<Question question={quiz[0]} qCorrectAnswer={quiz[0].correct_answer} qIncorrectAnswers={quiz[0].incorrect_answers} />) : (<Header />) &&
+        { startQuiz ? (<QuestionList quiz={quiz} />) : (<Header />) &&
         (<GetQuiz Categories={category} getQuiz={getQuiz} getStartQuiz={getStartQuiz}/>)
         }
         </>

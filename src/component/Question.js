@@ -30,6 +30,21 @@ const Question = ({ question, qCorrectAnswer, qIncorrectAnswers, index, quizSize
     const [answerStyle3, setAnswerStyle3] = useState('answer-item');
     const [answerStyle4, setAnswerStyle4] = useState('answer-item');
 
+    const replaceChara = (answers, id) =>{
+        return answers[id].replace(/&quot;/g,'"')
+        .replace(/&rdquo;/g, '"')
+        .replace(/&ldquo;/g, '"')
+        .replace(/&#039;/g, "'")
+        .replace(/&ntilde;/g, 'ñ')
+        .replace(/&hellip/g, '...')
+        .replace(/&egrave;/g, 'è')
+        .replace(/&amp;/g, '&')
+        .replace(/&oacute;/g, 'ó')
+        .replace(/&aacute;/g, 'á')
+        .replace(/&eacute;/g, 'é')
+        .replace(/&rsquo;/g, '’')
+    }
+
 
 
     return (
@@ -43,7 +58,11 @@ const Question = ({ question, qCorrectAnswer, qIncorrectAnswers, index, quizSize
                         <label>{question.question.replace(/&quot;/g,'"')
                         .replace(/&rdquo;/g, '"')
                         .replace(/&ldquo;/g, '"')
-                        .replace(/&#039;/g, "'").replace(/&ntilde;/g, 'ñ')}</label>
+                        .replace(/&#039;/g, "'")
+                        .replace(/&ntilde;/g, 'ñ')
+                        .replace(/&hellip/g, '...')
+                        .replace(/&amp;/g, '&')
+                        .replace(/&rsquo;/g, '’')}</label>
                     </div>
                 </div>
             </div>
@@ -52,17 +71,11 @@ const Question = ({ question, qCorrectAnswer, qIncorrectAnswers, index, quizSize
                     <div className='flex-item-left'>
                         <div id={allAnswers[0]} className={answerStyle1} onClick={checkAnswer}>
                             <div className='answer-letter'>A</div>
-                            <div className='answer-desc'>{allAnswers[0].replace(/&quot;/g,'"')
-                        .replace(/&rdquo;/g, '"')
-                        .replace(/&ldquo;/g, '"')
-                        .replace(/&#039;/g, "'").replace(/&ntilde;/g, 'ñ')}</div>
+                            <div className='answer-desc'>{replaceChara(allAnswers, 0)}</div>
                         </div>
                         <div id={allAnswers[1]} className={answerStyle2} onClick={checkAnswer}>
                             <div className='answer-letter'>B</div>
-                            <div className='answer-desc'>{allAnswers[1].replace(/&quot;/g,'"')
-                        .replace(/&rdquo;/g, '"')
-                        .replace(/&ldquo;/g, '"')
-                        .replace(/&#039;/g, "'").replace(/&ntilde;/g, 'ñ')}</div>
+                            <div className='answer-desc'>{replaceChara(allAnswers, 1)}</div>
                         </div>
                     </div>
 
@@ -71,18 +84,11 @@ const Question = ({ question, qCorrectAnswer, qIncorrectAnswers, index, quizSize
                         (<div className='flex-item-right'>
                             <div id={allAnswers[2]} className={answerStyle3} onClick={checkAnswer}>
                                 <div className='answer-letter'>C</div>
-                                <div className='answer-desc'>{allAnswers[2].replace(/&quot;/g,'"')
-                        .replace(/&rdquo;/g, '"')
-                        .replace(/&ldquo;/g, '"')
-                        .replace(/&#039;/g, "'").replace(/&ntilde;/g, 'ñ')}</div>
+                                <div className='answer-desc'>{replaceChara(allAnswers, 2)}</div>
                             </div>
                             <div id={allAnswers[3]} className={answerStyle4} onClick={checkAnswer}>
                                 <div className='answer-letter'>D</div>
-                                <div className='answer-desc'>{allAnswers[3].replace(/&quot;/g,'"')
-                        .replace(/&rdquo;/g, '"')
-                        .replace(/&ldquo;/g, '"')
-                        .replace(/&#039;/g, "'")
-                        .replace(/&ntilde;/g, 'ñ')}</div>
+                                <div className='answer-desc'>{replaceChara(allAnswers, 3)}</div>
                             </div>
                         </div>) : <></>
                     }
